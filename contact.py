@@ -1,8 +1,11 @@
 class Contact:
 
-  def __init__(self):
+  def __init__(self, first_name, last_name, email, note):
     """This method should initialize the contact's attributes"""
-
+    self.first_name = first_name
+    self.last_name = first_name
+    self.email = first_name
+    self.note = first_name
 
   @classmethod
   def create(cls):
