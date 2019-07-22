@@ -13,9 +13,6 @@ class CRM:
             # user_selected = int(input())
             self.call_option(user_selected)
 
-            # print('Do you want to add, modify, delete, display all, search by attribute, or exit?')
-            # main_request = 'Add'
-            #main_request = input()
             break
     
 
@@ -105,7 +102,7 @@ class CRM:
     def modify_existing_contact(self):
         print('\nModify an existing contact')
         print('Enter user id to modify:')
-        user_id = 1
+        user_id = 3
         # user_id = input()
 
         print('Do you want to change first name, last name, email, or note?')
@@ -115,7 +112,7 @@ class CRM:
         print('[3] Modify email')
         print('[4] Modify note')
 
-        modify_attribute = 1
+        modify_attribute = 4
         #modify_attribute = input()
 
 
@@ -127,13 +124,24 @@ class CRM:
         # print(f'What do you want for {modify_request}?')
 
 
+
         # Contact.update()
 
         # print(Contact.find_by(modify_attribute, modify_parameter))
 
         # print(Contact.update(modify_attribute, modify_parameter))
 
-        print(Contact.update())
+
+        print(Contact.find(user_id))
+
+        print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
+
+
+
+
+
+
+
 
 
 

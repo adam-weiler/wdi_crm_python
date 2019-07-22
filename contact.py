@@ -71,30 +71,37 @@ class Contact:
         """
         ##This needs to be done.
         print('Im updating!!')
+        print(self)
+        # print(modify_attribute)
+        # print(modify_parameter)
 
 
-        # if modify_attribute == 1:
-        #     print('First name:')
-        #     for contact in cls.contacts:
-        #         if contact.first_name.find(search_parameter) >= 0:
-        #             return(contact)
-        # elif modify_attribute == 2:
-        #     print('Last name:')
-        #     for contact in cls.contacts:
-        #         if contact.last_name.find(search_parameter) >= 0:
-        #             return(contact)
-        # elif modify_attribute == 3:
-        #     print('Email:')
-        #     for contact in cls.contacts:
-        #         if contact.email.find(search_parameter) >= 0:
-        #             return(contact)
-        # elif modify_attribute == 4:
-        #     print('Note:')
-        #     for contact in cls.contacts:
-        #         if contact.note.find(search_parameter) >= 0:
-        #             return(contact)
+        if modify_attribute == 1:
+            print('First name:')
+            self.first_name = modify_parameter
+            # for contact in self.contacts:
+            #     if contact.first_name.find(search_parameter) >= 0:
+            #         return(contact)
+        elif modify_attribute == 2:
+            print('Last name:')
+            self.last_name = modify_parameter
+            # for contact in self.contacts:
+            #     if contact.last_name.find(search_parameter) >= 0:
+            #         return(contact)
+        elif modify_attribute == 3:
+            print('Email:')
+            self.email = modify_parameter
+            # for contact in self.contacts:
+            #     if contact.email.find(search_parameter) >= 0:
+            #         return(contact)
+        elif modify_attribute == 4:
+            print('Note:')
+            self.note = modify_parameter
+            # for contact in self.contacts:
+            #     if contact.note.find(search_parameter) >= 0:
+            #         return(contact)
 
-        return ('There is no contact that matches that attribute.')
+        # return ('There is no contact that matches that attribute.')
 
 
 
@@ -182,3 +189,30 @@ class Contact:
 
     # Feel free to add other methods here, if you need them.
 
+
+
+
+# @classmethod
+#     def find_any(cls, search_attribute):
+#         if search_attribute == 1:
+#             print('First name:')
+#             for contact in cls.contacts:
+#                 if contact.first_name.find(search_parameter) >= 0:
+#                     return(contact)
+#         elif search_attribute == 2:
+#             print('Last name:')
+#             for contact in cls.contacts:
+#                 if contact.last_name.find(search_parameter) >= 0:
+#                     return(contact)
+#         elif search_attribute == 3:
+#             print('Email:')
+#             for contact in cls.contacts:
+#                 if contact.email.find(search_parameter) >= 0:
+#                     return(contact)
+#         elif search_attribute == 4:
+#             print('Note:')
+#             for contact in cls.contacts:
+#                 if contact.note.find(search_parameter) >= 0:
+#                     return(contact)
+
+#         return ('There is no contact that matches that attribute.')
