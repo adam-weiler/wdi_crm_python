@@ -72,20 +72,53 @@ class Contact:
 
 
     @classmethod
-    def find_by(cls, search_parameter):
+    def find_by(cls, search_attribute, search_parameter):
         """This method should work similarly to the find method above
         but it should allow you to search for a contact using attributes other than id
         by specifying both the name of the attribute and the value
         eg. searching for 'first_name', 'Betty' should return the first contact named Betty
         """
 
+        # actual_value = {2:'first_name', 3:'last_name', 4:'email', 5:'note'}
+
+        # print(f'{actual_value[search_attribute]} {search_parameter}')
+        # print('hey')
+
         # book.author.find(user_input) >= 0:
 
-        for contact in cls.contacts:
-            if contact.first_name.find(search_parameter) >= 0:
-                return(contact)
+        # print(cls.contacts)
 
-        return 'There is no contact with that ID.'
+        # for contact in cls.contacts:
+        #     print(contact)
+
+            # if contact.first_name.find(search_parameter) >= 0:
+            #     return(contact)
+
+        # return 'There is no contact with that ID.'
+
+
+        if search_attribute == 2:
+            print('First name:')
+            for contact in cls.contacts:
+                if contact.first_name.find(search_parameter) >= 0:
+                    return(contact)
+        elif search_attribute == 3:
+            print('Last name:')
+            for contact in cls.contacts:
+                if contact.last_name.find(search_parameter) >= 0:
+                    return(contact)
+        elif search_attribute == 4:
+            print('Email:')
+            for contact in cls.contacts:
+                if contact.email.find(search_parameter) >= 0:
+                    return(contact)
+        elif search_attribute == 5:
+            print('Note:')
+            for contact in cls.contacts:
+                if contact.note.find(search_parameter) >= 0:
+                    return(contact)
+
+        return ('There is no contact that matches that attribute.')
 
 
     @classmethod
