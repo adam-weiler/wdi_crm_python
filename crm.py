@@ -64,6 +64,7 @@ class CRM:
         modify_request = 'Add'
         #modify_request = input()
 
+
         print(f'What do you want for {modify_request}?')
 
 
@@ -75,12 +76,20 @@ class CRM:
     
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
-        for contact in Contact.contacts:
-            print(f'{contact}\n')
+        Contact.all()
+        
 
 
     def search_by_attribute(self):
-        pass
+        print('\nDo you want to search by ID, or name?')
+        search_attribute = 'ID'
+        # search_attribute = input()
+
+        print('What is the ID?')
+        search_parameter = 2
+        # search_parameter = int(input())
+
+        return Contact.find(search_parameter)
 
 
 # john_smith = Contact('John', 'Smith', 'johnsmith@compuserve.net', 'a note')
@@ -89,4 +98,9 @@ our_crm = CRM()
 
 our_crm.add_new_contact()
 
-our_crm.display_all_contacts()
+# our_crm.display_all_contacts()
+
+print(our_crm.search_by_attribute())
+
+
+
