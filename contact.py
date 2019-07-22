@@ -102,5 +102,16 @@ class Contact:
         HINT: Check the Array class docs for built-in methods that might be useful here
         """
 
+        print('Hey')
+        print(self.id)
+        # print(user_id)
+
+
+        Contact.contacts.remove(self) 
+
+
+        print('\nContact has been deleted.')
+
+
     # Feel free to add other methods here, if you need them.
 

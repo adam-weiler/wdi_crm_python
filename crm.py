@@ -71,7 +71,26 @@ class CRM:
     
 
     def delete_contact(self):
-        pass
+        print('\nEnter user id to delete:')
+        user_id = 2
+        # user_id = input()
+
+        # Contact.delete(user_id)
+
+        # print(Contact.find(user_id))
+
+
+        Contact.delete(Contact.find(user_id))
+
+
+
+
+
+
+
+
+
+
 
     
     def display_all_contacts(self):
@@ -81,27 +100,27 @@ class CRM:
 
 
     def search_by_attribute(self):
-        # print('\nDo you want to search by ID, or name?') #todo Add last_name, email, notes.
-        # search_attribute = 'ID'
-        # # search_attribute = input()
-
-        # print('What is the ID?')
-        # search_id = 2
-        # # search_id = int(input())
-
-        # return Contact.find(search_id)
-
-
-
-        print('\nDo you want to search by ID, first name?') #todo Add last_name, email, notes.
-        search_attribute = 'first name'
+        print('\nDo you want to search by ID, or name?') #todo Add last_name, email, notes.
+        search_attribute = 'ID'
         # search_attribute = input()
 
-        print('What is the first name?')
-        search_parameter = 'Betty'
-        # search_parameter = int(input())
+        print('What is the ID?')
+        search_id = 2
+        # search_id = int(input())
 
-        return Contact.find_by(search_parameter)
+        return Contact.find(search_id)
+
+
+
+        # print('\nDo you want to search by ID, first name?') #todo Add last_name, email, notes.
+        # search_attribute = 'first name'
+        # # search_attribute = input()
+
+        # print('What is the first name?')
+        # search_parameter = 'Betty'
+        # # search_parameter = int(input())
+
+        # return Contact.find_by(search_parameter)
 
 
 
@@ -119,3 +138,7 @@ print(our_crm.search_by_attribute())
 
 
 
+our_crm.delete_contact()
+
+
+our_crm.display_all_contacts()
