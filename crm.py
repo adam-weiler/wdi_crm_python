@@ -7,11 +7,10 @@ class CRM:
         while True:
             print('\nWhat would you like to do?')
             self.print_main_menu()
-            user_selected = 2
-            # user_selected = int(input())
+            # user_selected = 2
+            user_selected = int(input())
             self.call_option(user_selected)
-
-            break
+            # break
     
     def print_main_menu(self):
         print('[1] Add a new contact')
@@ -23,7 +22,7 @@ class CRM:
         # print('[9] Display full name') #What does this do?
 
         print('[6] Delete all contacts')
-        print('[7] Exit')
+        print('[7] Exit\n')
         print('Enter a number: ')
 
     
@@ -50,28 +49,28 @@ class CRM:
     def add_new_contact(self):
         print('\nAdding a new contact')
         print('Enter the first name:')
-        first_name = 'John'
-        # new_first_name = input()
+        # first_name = 'John'
+        first_name = input()
 
         print('Enter the last name:')
-        last_name = 'Smith'
-        # new_last_name = input()
+        # last_name = 'Smith'
+        last_name = input()
 
         print('Enter the email:')
-        email = 'johnsmith@compuserve.net'
-        # new_email = input()
+        # email = 'johnsmith@compuserve.net'
+        email = input()
 
         print('Enter a note:')
-        note = 'John is a great guy!'
-        # new_note = input()
+        # note = 'John is a great guy!'
+        note = input()
 
         Contact.create(first_name, last_name, email, note)
     
     def modify_existing_contact(self):
         print('\nModify an existing contact')
         print('Enter user id to modify:')
-        user_id = 3
-        # user_id = input()
+        # user_id = 3
+        user_id = int(input())
 
         print('Do you want to change first name, last name, email, or note?')
         print('[1] Modify first name')
@@ -79,22 +78,21 @@ class CRM:
         print('[3] Modify email')
         print('[4] Modify note')
 
-        modify_attribute = 4
-        #modify_attribute = input()
+        # modify_attribute = 4
+        modify_attribute = int(input())
 
         print('What is new value?')
-        modify_parameter = 'Johnny'
-        #modify_parameter = input()
+        # modify_parameter = 'Johnny'
+        modify_parameter = input()
 
         print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))  
 
     def delete_contact(self):
-        print('\nDelete a contact\n')
+        print('\nDelete a contact')
         print('Enter user id to delete:')
-        user_id = 2
-        # user_id = input()
-
-        Contact.delete(Contact.find(user_id))
+        # user_id = 2
+        user_id = int(input())
+        print(Contact.delete(Contact.find(user_id)))
 
     def delete_all_contacts(self):
         print('\nDelete all contacts')
@@ -115,14 +113,12 @@ class CRM:
         print('[4] Search by note')
         print('[5] Search by ID')
       
-        search_attribute = 1 # or 2 or 3 or 4
-        # search_attribute = input()
+        # search_attribute = 1 # or 2 or 3 or 4
+        search_attribute = input()
 
         print(f'What is your search term?')
-        search_parameter = 'B'
-        # search_term = int(input())
-
-
+        # search_parameter = 'B'
+        search_term = int(input())
 
         # search_attribute = 5
         # search_attribute = input()
@@ -155,18 +151,18 @@ Contact.create('John', 'Smith', 'johnsmith@compuserve.net', 'John is a great guy
 Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
 Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
 
-our_crm_app.add_new_contact()
+# our_crm_app.add_new_contact()
 
 our_crm_app.main_menu()
 
 
-# 
-print('\n\n\n')
-
-our_crm_app.display_all_contacts()
-
-# print(our_crm_app.search_by_attribute())
-
-# our_crm_app.delete_contact()
+# # 
+# print('\n\n\n')
 
 # our_crm_app.display_all_contacts()
+
+# # print(our_crm_app.search_by_attribute())
+
+# # our_crm_app.delete_contact()
+
+# # our_crm_app.display_all_contacts()

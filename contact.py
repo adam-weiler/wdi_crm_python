@@ -30,8 +30,11 @@ class Contact:
     @classmethod
     def all(cls):
         """This method should return all of the existing contacts"""
-        for contact in cls.contacts:
-            print(f'{contact}\n')
+        if len(cls.contacts) > 0:
+            for contact in cls.contacts:
+                print(f'{contact}\n')
+        else:
+            print('There are no contacts.')
 
     @classmethod
     def find(cls, request_id):
@@ -42,7 +45,8 @@ class Contact:
             if contact.id == request_id:
                 return(contact)
         #For loop has finished and contact was not found.
-        return 'There is no contact with that ID.'
+        print('There is no contact with that ID.')
+        return False
 
     def update(self, modify_attribute, modify_parameter):
         """ This method should allow you to specify
@@ -50,6 +54,9 @@ class Contact:
         2. the new value for that attribute
         and then make the appropriate change to the contact
         """
+        print(f'self: {self}')
+        print(f'Modify Attribute: {modify_attribute}')
+        print(f'Modify Parameter: {modify_parameter}')
         if modify_attribute == 1:
             self.first_name = modify_parameter
             return 'Contact has been updated.'
@@ -92,7 +99,6 @@ class Contact:
     @classmethod
     def delete_all(cls):
         """This method should delete all of the contacts"""
-        print('Im deleting everything!')
         cls.contacts = []
         cls.next_id = 1
         return ('Your contacts have been deleted.')
@@ -106,4 +112,4 @@ class Contact:
         HINT: Check the Array class docs for built-in methods that might be useful here
         """
         Contact.contacts.remove(self) 
-        print('\nContact has been deleted.')
+        return '\nContact has been deleted.'
