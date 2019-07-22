@@ -9,7 +9,7 @@ class CRM:
         while True:
             print('\nWhat would you like to do?')
             self.print_main_menu()
-            user_selected = 5
+            user_selected = 8
             # user_selected = int(input())
             self.call_option(user_selected)
 
@@ -27,7 +27,13 @@ class CRM:
         print('[3] Delete a contact')
         print('[4] Display all the contacts')
         print('[5] Search by attribute')
-        print('[6] Exit')
+
+
+        # print('[7] Display full name')
+        print('[8] Delete all contacts')
+
+
+        print('[9] Exit')
         print('Enter a number: ')
 
     
@@ -42,7 +48,16 @@ class CRM:
             self.display_all_contacts()
         elif user_selected == 5:
             self.search_by_attribute()
-        elif user_selected == 6:
+
+        # Display full name
+        # elif user_selected == 7:
+        #     self.search_by_attribute()
+
+        # Delete all
+        elif user_selected == 8:
+            self.delete_all_contacts()
+
+        elif user_selected == 9:
             sys.exit()
             pass
     
@@ -130,6 +145,14 @@ class CRM:
 
 
 
+    
+    def delete_all_contacts(self):
+        print('\nDelete all contacts')
+        print('Please enter \'yes\' to confirm:')
+
+        Contact.delete_all()
+
+
 
 
 
@@ -172,11 +195,11 @@ class CRM:
 
 
 
-        search_attribute = 5 #or 3 or 4 or 5
+        search_attribute = 2 #or 3 or 4 or 5
         # search_attribute = input()
 
         print(f'What is your search term?')
-        search_parameter = 'oke'
+        search_parameter = 'B'
         # search_term = int(input())
 
         print(Contact.find_by(search_attribute, search_parameter))
@@ -212,8 +235,9 @@ our_crm_app.main_menu()
 
 
 # 
+print('\n\n\n')
 
-# # our_crm.display_all_contacts()
+our_crm_app.display_all_contacts()
 
 # print(our_crm_app.search_by_attribute())
 

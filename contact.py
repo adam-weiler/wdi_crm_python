@@ -69,6 +69,7 @@ class Contact:
         2. the new value for that attribute
         and then make the appropriate change to the contact
         """
+        ##This needs to be done.
 
 
     @classmethod
@@ -124,10 +125,18 @@ class Contact:
     @classmethod
     def delete_all(cls):
         """This method should delete all of the contacts"""
+        ##This needs to be done.
+        print('Im deleting everything!')
+
+        cls.contacts = []
+        cls.next_id = 1
+
+        return ('Your contacts have been deleted.')
 
 
     def full_name(self):
         """Returns the full (first and last) name of the contact"""
+        ##This needs to be done.
 
 
     def delete(self):
