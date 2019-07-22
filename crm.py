@@ -32,12 +32,17 @@ class CRM:
     new_note = 'John is a great guy!'
     # new_note = input()
 
-    john_smith = Contact(new_first_name, new_last_name, new_email, new_note)
+    john_smith = Contact.create(new_first_name, new_last_name, new_email, new_note)
 
-    print(john_smith.first_name)
+    # print(john_smith.first_name)
+    print(john_smith)
+
+
+    
     
 
-  
+
+
   
   def modify_existing_contact(self):
     print('Enter user id to modify:')

@@ -1,17 +1,38 @@
 class Contact:
 
+  contacts = []
+  next_id = 1
+
   def __init__(self, first_name, last_name, email, note):
     """This method should initialize the contact's attributes"""
     self.first_name = first_name
-    self.last_name = first_name
-    self.email = first_name
-    self.note = first_name
+    self.last_name = last_name
+    self.email = email
+    self.note = note
+    self.id = Contact.next_id
+
+    self.next_id += 1
+
+
+  def __str__(self):
+    return f'''Contact #{self.id}: 
+    {self.first_name} {self.last_name} 
+    {self.email}
+    {self.note}'''
+
 
   @classmethod
-  def create(cls):
+  def create(cls, new_first_name, new_last_name, new_email, new_note):
     """This method should call the initializer,
     store the newly created contact, and then return it
     """
+    new_contact = Contact(new_first_name, new_last_name, new_email, new_note)
+
+    cls.contacts.append(new_contact)
+
+    return(new_contact)
+
+    
 
   @classmethod
   def all(cls):
