@@ -81,15 +81,30 @@ class CRM:
 
 
     def search_by_attribute(self):
-        print('\nDo you want to search by ID, or name?')
-        search_attribute = 'ID'
+        # print('\nDo you want to search by ID, or name?') #todo Add last_name, email, notes.
+        # search_attribute = 'ID'
+        # # search_attribute = input()
+
+        # print('What is the ID?')
+        # search_id = 2
+        # # search_id = int(input())
+
+        # return Contact.find(search_id)
+
+
+
+        print('\nDo you want to search by ID, first name?') #todo Add last_name, email, notes.
+        search_attribute = 'first name'
         # search_attribute = input()
 
-        print('What is the ID?')
-        search_parameter = 2
+        print('What is the first name?')
+        search_parameter = 'Betty'
         # search_parameter = int(input())
 
-        return Contact.find(search_parameter)
+        return Contact.find_by(search_parameter)
+
+
+
 
 
 # john_smith = Contact('John', 'Smith', 'johnsmith@compuserve.net', 'a note')

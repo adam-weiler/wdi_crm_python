@@ -72,12 +72,20 @@ class Contact:
 
 
     @classmethod
-    def find_by(cls):
+    def find_by(cls, search_parameter):
         """This method should work similarly to the find method above
         but it should allow you to search for a contact using attributes other than id
         by specifying both the name of the attribute and the value
         eg. searching for 'first_name', 'Betty' should return the first contact named Betty
         """
+
+        # book.author.find(user_input) >= 0:
+
+        for contact in cls.contacts:
+            if contact.first_name.find(search_parameter) >= 0:
+                return(contact)
+
+        return 'There is no contact with that ID.'
 
 
     @classmethod
