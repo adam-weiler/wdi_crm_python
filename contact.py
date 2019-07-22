@@ -11,7 +11,7 @@ class Contact:
     self.note = note
     self.id = Contact.next_id
 
-    self.next_id += 1
+    Contact.next_id += 1
 
 
   def __str__(self):
