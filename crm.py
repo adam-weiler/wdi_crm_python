@@ -1,9 +1,7 @@
 from contact import Contact
 import sys #Need to trigger the exit command.
 
-
 class CRM:
-
     def main_menu(self):
         print('Starting the CRM app')
         while True:
@@ -15,9 +13,6 @@ class CRM:
 
             break
     
-
-
-
     def print_main_menu(self):
         print('[1] Add a new contact')
         print('[2] Modify an existing contact')
@@ -25,12 +20,10 @@ class CRM:
         print('[4] Display all the contacts')
         print('[5] Search by attribute')
 
+        # print('[9] Display full name') #What does this do?
 
-        # print('[7] Display full name')
-        print('[8] Delete all contacts')
-
-
-        print('[9] Exit')
+        print('[6] Delete all contacts')
+        print('[7] Exit')
         print('Enter a number: ')
 
     
@@ -46,19 +39,14 @@ class CRM:
         elif user_selected == 5:
             self.search_by_attribute()
 
-        # Display full name
-        # elif user_selected == 7:
-        #     self.search_by_attribute()
+        # elif user_selected == 9:
+        #     self.full_name()
 
-        # Delete all
-        elif user_selected == 8:
+        elif user_selected == 6:
             self.delete_all_contacts()
-
-        elif user_selected == 9:
+        elif user_selected == 7:
             sys.exit()
-            pass
     
-
     def add_new_contact(self):
         print('\nAdding a new contact')
         print('Enter the first name:')
@@ -78,26 +66,6 @@ class CRM:
         # new_note = input()
 
         Contact.create(first_name, last_name, email, note)
-
-        # print(john_smith.first_name)
-        # print(contact1)
-
-
-
-        Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
-
-        # print(contact2)
-
-
-        Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
-
-        # print(contact3)
-
-
-
-
-
-
     
     def modify_existing_contact(self):
         print('\nModify an existing contact')
@@ -106,7 +74,6 @@ class CRM:
         # user_id = input()
 
         print('Do you want to change first name, last name, email, or note?')
-
         print('[1] Modify first name')
         print('[2] Modify last name')
         print('[3] Modify email')
@@ -115,37 +82,11 @@ class CRM:
         modify_attribute = 4
         #modify_attribute = input()
 
-
         print('What is new value?')
         modify_parameter = 'Johnny'
         #modify_parameter = input()
 
-
-        # print(f'What do you want for {modify_request}?')
-
-
-
-        # Contact.update()
-
-        # print(Contact.find_by(modify_attribute, modify_parameter))
-
-        # print(Contact.update(modify_attribute, modify_parameter))
-
-
-        print(Contact.find(user_id))
-
-        print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
-
-
-
-
-
-
-
-
-
-
-    
+        print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))  
 
     def delete_contact(self):
         print('\nDelete a contact\n')
@@ -153,66 +94,33 @@ class CRM:
         user_id = 2
         # user_id = input()
 
-        # Contact.delete(user_id)
-
-        # print(Contact.find(user_id))
-
-
         Contact.delete(Contact.find(user_id))
 
-
-
-    
     def delete_all_contacts(self):
         print('\nDelete all contacts')
         print('Please enter \'yes\' to confirm:')
+        if input() == 'yes':
+            Contact.delete_all()
 
-        Contact.delete_all()
-
-
-
-
-
-
-
-
-
-
-    
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
         Contact.all()
         
-
-
     def search_by_attribute(self):
         print('\nSearch by Attribute')
-        print('What do you want to search by?') #todo Add last_name, email, notes.
-    
+        print('What do you want to search by?')
         print('[1] Search by first name')
         print('[2] Search by last name')
         print('[3] Search by email')
         print('[4] Search by note')
         print('[5] Search by ID')
-        
-
-
-
-
-
-
-
-
-
-
+      
         search_attribute = 1 # or 2 or 3 or 4
         # search_attribute = input()
 
         print(f'What is your search term?')
         search_parameter = 'B'
         # search_term = int(input())
-
-
 
 
 
@@ -225,13 +133,7 @@ class CRM:
 
         # return Contact.find(search_id)
 
-
-
-
         print(Contact.find_by(search_attribute, search_parameter))
-
-
-
 
 
 
@@ -247,17 +149,15 @@ class CRM:
 
 
 
-
-
-
-# john_smith = Contact('John', 'Smith', 'johnsmith@compuserve.net', 'a note')
-
 our_crm_app = CRM()
+
+Contact.create('John', 'Smith', 'johnsmith@compuserve.net', 'John is a great guy!')
+Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
+Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
 
 our_crm_app.add_new_contact()
 
 our_crm_app.main_menu()
-
 
 
 # 
@@ -267,9 +167,6 @@ our_crm_app.display_all_contacts()
 
 # print(our_crm_app.search_by_attribute())
 
-
-
 # our_crm_app.delete_contact()
-
 
 # our_crm_app.display_all_contacts()
