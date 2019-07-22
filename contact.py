@@ -63,13 +63,39 @@ class Contact:
         return 'There is no contact with that ID.'
 
 
-    def update(self):
+    def update(self, modify_attribute, modify_parameter):
         """ This method should allow you to specify
         1. which of the contact's attributes you want to update
         2. the new value for that attribute
         and then make the appropriate change to the contact
         """
         ##This needs to be done.
+        print('Im updating!!')
+
+
+        # if modify_attribute == 1:
+        #     print('First name:')
+        #     for contact in cls.contacts:
+        #         if contact.first_name.find(search_parameter) >= 0:
+        #             return(contact)
+        # elif modify_attribute == 2:
+        #     print('Last name:')
+        #     for contact in cls.contacts:
+        #         if contact.last_name.find(search_parameter) >= 0:
+        #             return(contact)
+        # elif modify_attribute == 3:
+        #     print('Email:')
+        #     for contact in cls.contacts:
+        #         if contact.email.find(search_parameter) >= 0:
+        #             return(contact)
+        # elif modify_attribute == 4:
+        #     print('Note:')
+        #     for contact in cls.contacts:
+        #         if contact.note.find(search_parameter) >= 0:
+        #             return(contact)
+
+        return ('There is no contact that matches that attribute.')
+
 
 
     @classmethod
@@ -98,22 +124,22 @@ class Contact:
         # return 'There is no contact with that ID.'
 
 
-        if search_attribute == 2:
+        if search_attribute == 1:
             print('First name:')
             for contact in cls.contacts:
                 if contact.first_name.find(search_parameter) >= 0:
                     return(contact)
-        elif search_attribute == 3:
+        elif search_attribute == 2:
             print('Last name:')
             for contact in cls.contacts:
                 if contact.last_name.find(search_parameter) >= 0:
                     return(contact)
-        elif search_attribute == 4:
+        elif search_attribute == 3:
             print('Email:')
             for contact in cls.contacts:
                 if contact.email.find(search_parameter) >= 0:
                     return(contact)
-        elif search_attribute == 5:
+        elif search_attribute == 4:
             print('Note:')
             for contact in cls.contacts:
                 if contact.note.find(search_parameter) >= 0:
@@ -125,7 +151,6 @@ class Contact:
     @classmethod
     def delete_all(cls):
         """This method should delete all of the contacts"""
-        ##This needs to be done.
         print('Im deleting everything!')
 
         cls.contacts = []

@@ -9,7 +9,7 @@ class CRM:
         while True:
             print('\nWhat would you like to do?')
             self.print_main_menu()
-            user_selected = 8
+            user_selected = 2
             # user_selected = int(input())
             self.call_option(user_selected)
 
@@ -120,11 +120,20 @@ class CRM:
 
 
         print('What is new value?')
-        modify_value = 'Johnny'
+        modify_parameter = 'Johnny'
+        #modify_parameter = input()
 
 
         # print(f'What do you want for {modify_request}?')
 
+
+        # Contact.update()
+
+        # print(Contact.find_by(modify_attribute, modify_parameter))
+
+        # print(Contact.update(modify_attribute, modify_parameter))
+
+        print(Contact.update())
 
 
 
@@ -171,16 +180,35 @@ class CRM:
     def search_by_attribute(self):
         print('\nSearch by Attribute')
         print('What do you want to search by?') #todo Add last_name, email, notes.
-        
-        print('[1] Search by ID')
-        print('[2] Search by first name')
-        print('[3] Search by last name')
-        print('[4] Search by email')
-        print('[5] Search by note')
+    
+        print('[1] Search by first name')
+        print('[2] Search by last name')
+        print('[3] Search by email')
+        print('[4] Search by note')
+        print('[5] Search by ID')
         
 
 
-        # search_attribute = 1
+
+
+
+
+
+
+
+
+        search_attribute = 1 # or 2 or 3 or 4
+        # search_attribute = input()
+
+        print(f'What is your search term?')
+        search_parameter = 'B'
+        # search_term = int(input())
+
+
+
+
+
+        # search_attribute = 5
         # search_attribute = input()
 
         # print(f'What is the ID?')
@@ -191,16 +219,6 @@ class CRM:
 
 
 
-
-
-
-
-        search_attribute = 2 #or 3 or 4 or 5
-        # search_attribute = input()
-
-        print(f'What is your search term?')
-        search_parameter = 'B'
-        # search_term = int(input())
 
         print(Contact.find_by(search_attribute, search_parameter))
 
