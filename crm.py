@@ -12,6 +12,7 @@ class CRM:
             self.call_option(user_selected)
             # break
     
+
     def print_main_menu(self):
         print('[1] Add a new contact')
         print('[2] Modify an existing contact')
@@ -25,7 +26,7 @@ class CRM:
         print('[7] Exit\n')
         print('Enter a number: ')
 
-    
+
     def call_option(self, user_selected):
         if user_selected == 1:
             self.add_new_contact()
@@ -46,6 +47,7 @@ class CRM:
         elif user_selected == 7:
             sys.exit()
     
+
     def add_new_contact(self):
         print('\nAdding a new contact')
         print('Enter the first name:')
@@ -66,6 +68,7 @@ class CRM:
 
         # Contact.create(first_name, last_name, email, note)
         contact = Contact.create(first_name=first_name, last_name=last_name, email=email, note=note)
+        print('New contact has been created.')
 
     
     def modify_existing_contact(self):
@@ -87,17 +90,6 @@ class CRM:
         # modify_parameter = 'Johnny'
         modify_parameter = input()
 
-        # print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
-
-
-        # print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))
-
-
-
-        # query = Contact.update(first_name='KHAN').where(Contact.id == 1) #This works!
-        # query.execute()  # Returns the number of rows that were updated.
-
-
         if modify_attribute == 1:
             query = Contact.update(first_name=modify_parameter).where(Contact.id == user_id)
         elif modify_attribute == 2:
@@ -107,7 +99,7 @@ class CRM:
         elif modify_attribute == 4:
             query = Contact.update(note=modify_parameter).where(Contact.id == user_id)
         else:
-            return 'Invalid attribute.'
+            print('Invalid attribute.')
         
         query.execute()
         print('Contact has been updated.')
@@ -122,32 +114,27 @@ class CRM:
 
         Contact.get(id=user_id).delete_instance()
         print ('Your contacts have been deleted.')
-        # print(Contact.delete(Contact.get(id=user_id)))
-
 
 
     def delete_all_contacts(self):
         print('\nDelete all contacts')
         print('Please enter \'yes\' to confirm:')
         if input() == 'yes':
-            # joe = User.select().where(User.username == 'Joe')
-            # Message.delete().where(Message.from_user == joe).execute()
-
-            # select_all = User.select()
+            # Contact.delete_all()
             Contact.delete().execute()
             print('Your contacts have been deleted.')
-
         else:
             print('Returning to main menu.')
 
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
         # Contact.all()
-        for contact in Contact.select():
-            print(f'{contact.id}')
-            print(f'{contact.first_name} - {contact.last_name}')
-            print(f'{contact.email}')
-            print(f'{contact.note}\n')
+
+        if len(Contact.select()) > 0:
+            for contact in Contact.select():
+                Contact.print_contact(contact)
+        else:
+            print('There are no contacts.')
         
     def search_by_attribute(self):
         print('\nSearch by Attribute')
@@ -168,103 +155,21 @@ class CRM:
             print(f'What is your search term?')
             # search_parameter = 'B'
             search_parameter = input()
-
-
-            # # print(Contact.find_by(search_attribute, search_parameter))  ###This doesn't work.
-
-
-            # contact = Contact.get(Contact.id == 1)
-            # print(contact)
-
-
-            # # if search_attribute == 1:
-            # #     print('first name')
-            # #     # search_attribute = 'first_name'
-            # #     # Contact.get(first_name = search_parameter).execute()
-            # #     # Contact.get('first_name' == search_parameter)
-
-            # #     contact = Contact.get(Contact.first_name == search_parameter)
-
-
-
-            # # elif search_attribute == 2:
-            # #     print('last name')
-            # #     # search_attribute = 'last_name'
-            # #     Contact.get(last_name = search_parameter).execute()
-            # # elif search_attribute == 3:
-            # #     print('email')
-            # #     # search_attribute = 'email'
-            # #     Contact.get(email = search_parameter).execute()
-            # # elif search_attribute == 4:
-            # #     print('note')
-            # #     # search_attribute = 'note'
-            # #     Contact.get(email = search_parameter).execute()
-
-
-            # # print(f'search_attribute: {search_attribute}')
-            # print(f'search_parameter: {search_parameter}')
-
-            # # print(Contact.get(search_attribute = search_parameter))
-
-
-
-
-
-
-
-# if search_attribute == 1:
-    #         for contact in cls.contacts:
-    #             if contact.first_name.find(search_parameter) >= 0:
-    #                 print('We found this contact by first name:')
-    #                 return contact
-    #     elif search_attribute == 2:
-    #         for contact in cls.contacts:
-    #             if contact.last_name.find(search_parameter) >= 0:
-    #                 print('We found this contact by last name:')
-    #                 return contact
-    #     elif search_attribute == 3:
-    #         for contact in cls.contacts:
-    #             if contact.email.find(search_parameter) >= 0:
-    #                 print('We found this contact by email:')
-    #                 return contact
-    #     elif search_attribute == 4:
-    #         for contact in cls.contacts:
-    #             if contact.note.find(search_parameter) >= 0:
-    #                 print('We found this contact by note:')
-    #                 return contact
-    #     return 'There is no contact that matches that attribute.'
-
-
-
+            # print(Contact.find_by(search_attribute, search_parameter))  ###This doesn't work.
 
             if search_attribute == 1:
-                print('first name')
-                # search_attribute = 'first'
                 query = Contact.select().where(Contact.first_name == search_parameter)
             elif search_attribute == 2:
-                print('last name')
-                # search_attribute = 'last_name'
                 query = Contact.select().where(Contact.last_name == search_parameter)
             elif search_attribute == 3:
-                print('email')
-                # search_attribute = 'email'
                 query = Contact.select().where(Contact.email == search_parameter)
             elif search_attribute == 4:
-                print('note')
-                # search_attribute = 'note'
                 query = Contact.select().where(Contact.note == search_parameter)
 
-
-
             for contact in query:
-                print(f'{contact.id}')
-                print(f'{contact.first_name} - {contact.last_name}')
-                print(f'{contact.email}')
-                print(f'{contact.note}\n')
-
-
-
-
+                return(Contact.print_contact(contact))
+            #For loop has finished and contact was not found.
+            print('There is no contact that matches that attribute.')
 
         elif search_attribute == 5: #If search by ID.
             print(f'What is the ID?')
@@ -272,58 +177,12 @@ class CRM:
             search_id = int(input())
             # print(Contact.find(search_id))
 
-
-            # # Contact.get(id=search_id)  ###This doesn't work.
-            # # Contact.get(id=search_id).execute()  ###This doesn't work.
-
-
-
-
-            # # contact = Contact.get(Contact.id == 1)
-            # # print(contact)
-
-
-            # # print(Contact.get(Contact.id == 1))
-
-
-            # query = Contact.select().where(Contact.id == search_id)
-            # # print(query)
-            # # something = query.execute()
-
-            # # print(something.id)
-
-
-            # cursor = Contact.get(query)
-            # print(cursor)
-
-
-            # # Model.get_by_id(some_id)
-            # # print(Contact.get_by_id(1))
-
-            # # print(contact)
-
-            # # something = Contact.select().where(Contact.id == 1).execute() # <peewee.ModelObjectCursorWrapper object at 0x7f0d20f72da0>
-            # # print(something)
-
-
-            # print(Contact.select().where(Contact.id == search_id).execute())
-
             query = Contact.select().where(Contact.id == search_id)
-            # query.execute()
-
-            # print(type(query))
-
+            
             for contact in query:
-                print(f'{contact.id}')
-                print(f'{contact.first_name} - {contact.last_name}')
-                print(f'{contact.email}')
-                print(f'{contact.note}\n')
-
-
-# query = User.select().where(User.active == True).order_by(User.username)
-
-            # print('im done!')
-
+                return(Contact.print_contact(contact))
+            #For loop has finished and contact was not found.
+            print('There is no contact with that ID.')
 
         else: 
             print('That is an invalid selection.') #Todo add more of these. Also a while loop.

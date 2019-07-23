@@ -119,6 +119,12 @@ class Contact(Model):
         """Returns the full (first and last) name of the contact"""
         return "{} {}".format(self.first_name, self.last_name)
 
+    def print_contact(contact):
+        print(f'\n{contact.id}')
+        print(f'{contact.first_name} - {contact.last_name}')
+        print(f'{contact.email}')
+        print(f'{contact.note}')
+
     # def delete(self): #This will be handled by the database.
     #     """This method should delete the contact
     #     HINT: Check the Array class docs for built-in methods that might be useful here
