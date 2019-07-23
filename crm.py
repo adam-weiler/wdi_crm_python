@@ -88,7 +88,11 @@ class CRM:
         modify_parameter = input()
 
         # print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
-        print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))  
+
+
+        print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))  ###This doesn't work.
+
+        
 
     def delete_contact(self):
         print('\nDelete a contact')
@@ -96,23 +100,36 @@ class CRM:
         # user_id = 2
         user_id = int(input())
         # print(Contact.delete(Contact.find(user_id)))
-        print(Contact.delete(Contact.get(id=user_id)))
+
+        Contact.get(id=user_id).delete_instance()
+        print ('Your contacts have been deleted.')
+        # print(Contact.delete(Contact.get(id=user_id)))
+
+
 
     def delete_all_contacts(self):
         print('\nDelete all contacts')
         print('Please enter \'yes\' to confirm:')
         if input() == 'yes':
-            Contact.delete_all()
+            # joe = User.select().where(User.username == 'Joe')
+            # Message.delete().where(Message.from_user == joe).execute()
+
+            # select_all = User.select()
+            Contact.delete().execute()
+            # Contact.delete_all()  ###This doesn't work.
+            print('Your contacts have been deleted.')
+
         else:
-            return 'Returning to main menu.'
+            print('Returning to main menu.')
 
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
         # Contact.all()
         for contact in Contact.select():
+            print(f'{contact.id}')
             print(f'{contact.first_name} - {contact.last_name}')
             print(f'{contact.email}')
-            print(f'{contact.note}')
+            print(f'{contact.note}\n')
         
     def search_by_attribute(self):
         print('\nSearch by Attribute')
@@ -133,12 +150,20 @@ class CRM:
             print(f'What is your search term?')
             # search_parameter = 'B'
             search_parameter = input()
-            print(Contact.find_by(search_attribute, search_parameter))
+
+
+            print(Contact.find_by(search_attribute, search_parameter))  ###This doesn't work.
+
+
         elif search_attribute == 5: #If search by ID.
             print(f'What is the ID?')
             # search_id = 2
             search_id = int(input())
             # print(Contact.find(search_id))
-            print(Contact.get(id=search_id))
+
+
+            print(Contact.get(id=search_id))  ###This doesn't work.
+
+
         else: 
             print('That is an invalid selection.') #Todo add more of these. Also a while loop.
