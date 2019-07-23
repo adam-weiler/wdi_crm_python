@@ -3,9 +3,12 @@ from crm import CRM
 
 our_crm_app = CRM()
 
-Contact.create('John', 'Smith', 'johnsmith@compuserve.net', 'John is a great guy!')
-Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
-Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
+# Contact.create('John', 'Smith', 'johnsmith@compuserve.net', 'John is a great guy!')
+# Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
+# Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
+Contact.create(first_name='John', last_name='Smith', email='johnsmith@compuserve.net', note='John is a great guy!')
+Contact.create(first_name='Bit', last_name='Bot', email='bettymakes@bitmakerlabs.com', note='Loves Pokemon Go.')
+Contact.create(first_name='Betty', last_name='Maker', email='bitbot@bitmaker.com', note='beep boop')
 
 #CRM methods
 our_crm_app.main_menu()
