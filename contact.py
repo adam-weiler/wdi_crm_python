@@ -54,22 +54,19 @@ class Contact:
         2. the new value for that attribute
         and then make the appropriate change to the contact
         """
-        print(f'self: {self}')
-        print(f'Modify Attribute: {modify_attribute}')
-        print(f'Modify Parameter: {modify_parameter}')
         if modify_attribute == 1:
             self.first_name = modify_parameter
             return 'Contact has been updated.'
         elif modify_attribute == 2:
             self.last_name = modify_parameter
-            return ('Contact has been updated.')
+            return 'Contact has been updated.'
         elif modify_attribute == 3:
             self.email = modify_parameter
-            return ('Contact has been updated.')
+            return 'Contact has been updated.'
         elif modify_attribute == 4:
             self.note = modify_parameter
-            return ('Contact has been updated.')
-        return ('Invalid attribute.')
+            return 'Contact has been updated.'
+        return 'Invalid attribute.'
 
     @classmethod
     def find_by(cls, search_attribute, search_parameter):
@@ -81,27 +78,31 @@ class Contact:
         if search_attribute == 1:
             for contact in cls.contacts:
                 if contact.first_name.find(search_parameter) >= 0:
-                    return(contact)
+                    print('We found this contact by first name:')
+                    return contact
         elif search_attribute == 2:
             for contact in cls.contacts:
                 if contact.last_name.find(search_parameter) >= 0:
-                    return(contact)
+                    print('We found this contact by last name:')
+                    return contact
         elif search_attribute == 3:
             for contact in cls.contacts:
                 if contact.email.find(search_parameter) >= 0:
-                    return(contact)
+                    print('We found this contact by email:')
+                    return contact
         elif search_attribute == 4:
             for contact in cls.contacts:
                 if contact.note.find(search_parameter) >= 0:
-                    return(contact)
-        return ('There is no contact that matches that attribute.')
+                    print('We found this contact by note:')
+                    return contact
+        return 'There is no contact that matches that attribute.'
 
     @classmethod
     def delete_all(cls):
         """This method should delete all of the contacts"""
         cls.contacts = []
         cls.next_id = 1
-        return ('Your contacts have been deleted.')
+        return 'Your contacts have been deleted.'
 
     def full_name(self):
         """Returns the full (first and last) name of the contact"""

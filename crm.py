@@ -99,6 +99,8 @@ class CRM:
         print('Please enter \'yes\' to confirm:')
         if input() == 'yes':
             Contact.delete_all()
+        else:
+            return 'Returning to main menu.'
 
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
@@ -114,55 +116,20 @@ class CRM:
         print('[5] Search by ID')
       
         # search_attribute = 1 # or 2 or 3 or 4
-        search_attribute = input()
-
-        print(f'What is your search term?')
-        # search_parameter = 'B'
-        search_term = int(input())
+        search_attribute = int(input())
 
         # search_attribute = 5
-        # search_attribute = input()
+        # search_attribute = int(input())
 
-        # print(f'What is the ID?')
-        # search_id = 2
-        # # search_id = int(input())
-
-        # return Contact.find(search_id)
-
-        print(Contact.find_by(search_attribute, search_parameter))
-
-
-
-        # print('\nDo you want to search by ID, first name?') #todo Add last_name, email, notes.
-        # search_attribute = 'first name'
-        # # search_attribute = input()
-
-        # print('What is the first name?')
-        # search_parameter = 'Betty'
-        # # search_parameter = int(input())
-
-        # return Contact.find_by(search_parameter)
-
-
-
-our_crm_app = CRM()
-
-Contact.create('John', 'Smith', 'johnsmith@compuserve.net', 'John is a great guy!')
-Contact.create('Bit', 'Bot', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon Go.')
-Contact.create('Betty', 'Maker', 'bitbot@bitmaker.com', 'beep boop')
-
-# our_crm_app.add_new_contact()
-
-our_crm_app.main_menu()
-
-
-# # 
-# print('\n\n\n')
-
-# our_crm_app.display_all_contacts()
-
-# # print(our_crm_app.search_by_attribute())
-
-# # our_crm_app.delete_contact()
-
-# # our_crm_app.display_all_contacts()
+        if search_attribute in range(1,5): #If search by first_name, last_name, email, or note.
+            print(f'What is your search term?')
+            # search_parameter = 'B'
+            search_parameter = input()
+            print(Contact.find_by(search_attribute, search_parameter))
+        elif search_attribute == 5: #If search by ID.
+            print(f'What is the ID?')
+            # search_id = 2
+            search_id = int(input())
+            print(Contact.find(search_id))
+        else: 
+            print('That is an invalid selection.') #Todo add more of these. Also a while loop.
