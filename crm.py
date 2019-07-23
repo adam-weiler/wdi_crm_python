@@ -87,14 +87,16 @@ class CRM:
         # modify_parameter = 'Johnny'
         modify_parameter = input()
 
-        print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))  
+        # print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
+        print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))  
 
     def delete_contact(self):
         print('\nDelete a contact')
         print('Enter user id to delete:')
         # user_id = 2
         user_id = int(input())
-        print(Contact.delete(Contact.find(user_id)))
+        # print(Contact.delete(Contact.find(user_id)))
+        print(Contact.delete(Contact.get(id=user_id)))
 
     def delete_all_contacts(self):
         print('\nDelete all contacts')
@@ -132,6 +134,7 @@ class CRM:
             print(f'What is the ID?')
             # search_id = 2
             search_id = int(input())
-            print(Contact.find(search_id))
+            # print(Contact.find(search_id))
+            print(Contact.get(id=search_id))
         else: 
             print('That is an invalid selection.') #Todo add more of these. Also a while loop.
