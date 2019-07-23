@@ -90,7 +90,7 @@ class CRM:
         # print(Contact.update(Contact.find(user_id), modify_attribute, modify_parameter))
 
 
-        # print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))  ###This doesn't work.
+        # print(Contact.update(Contact.get(id=user_id), modify_attribute, modify_parameter))
 
 
 
@@ -99,28 +99,18 @@ class CRM:
 
 
         if modify_attribute == 1:
-            # self.first_name = modify_parameter
             query = Contact.update(first_name=modify_parameter).where(Contact.id == user_id)
-            # return 'Contact has been updated.'
         elif modify_attribute == 2:
-            # self.last_name = modify_parameter
             query = Contact.update(last_name=modify_parameter).where(Contact.id == user_id)
-            # return 'Contact has been updated.'
-            pass
         elif modify_attribute == 3:
             query = Contact.update(email=modify_parameter).where(Contact.id == user_id)
-            # self.email = modify_parameter
-            # return 'Contact has been updated.'
-            pass
         elif modify_attribute == 4:
             query = Contact.update(note=modify_parameter).where(Contact.id == user_id)
-            # self.note = modify_parameter
-            # return 'Contact has been updated.'
-            pass
-        # return 'Invalid attribute.'
-
+        else:
+            return 'Invalid attribute.'
+        
         query.execute()
-
+        print('Contact has been updated.')
         
 
     def delete_contact(self):
@@ -260,40 +250,54 @@ class CRM:
             # print(Contact.find(search_id))
 
 
-            # Contact.get(id=search_id)  ###This doesn't work.
-            # Contact.get(id=search_id).execute()  ###This doesn't work.
+            # # Contact.get(id=search_id)  ###This doesn't work.
+            # # Contact.get(id=search_id).execute()  ###This doesn't work.
 
 
 
 
-            # contact = Contact.get(Contact.id == 1)
-            # print(contact)
+            # # contact = Contact.get(Contact.id == 1)
+            # # print(contact)
 
 
-            # print(Contact.get(Contact.id == 1))
+            # # print(Contact.get(Contact.id == 1))
 
+
+            # query = Contact.select().where(Contact.id == search_id)
+            # # print(query)
+            # # something = query.execute()
+
+            # # print(something.id)
+
+
+            # cursor = Contact.get(query)
+            # print(cursor)
+
+
+            # # Model.get_by_id(some_id)
+            # # print(Contact.get_by_id(1))
+
+            # # print(contact)
+
+            # # something = Contact.select().where(Contact.id == 1).execute() # <peewee.ModelObjectCursorWrapper object at 0x7f0d20f72da0>
+            # # print(something)
+
+
+            # print(Contact.select().where(Contact.id == search_id).execute())
 
             query = Contact.select().where(Contact.id == search_id)
-            # print(query)
-            # something = query.execute()
+            # query.execute()
 
-            # print(something.id)
+            print(type(query))
 
-
-            cursor = Contact.get(query)
-            print(cursor)
+            for tweet in query:
+                print(tweet.first_name)
 
 
-            # Model.get_by_id(some_id)
-            # print(Contact.get_by_id(1))
+# query = User.select().where(User.active == True).order_by(User.username)
 
-            # print(contact)
+            print('im done!')
 
-            # something = Contact.select().where(Contact.id == 1).execute() # <peewee.ModelObjectCursorWrapper object at 0x7f0d20f72da0>
-            # print(something)
-
-
-            print(Contact.select().where(Contact.id == search_id).execute())
 
         else: 
             print('That is an invalid selection.') #Todo add more of these. Also a while loop.
