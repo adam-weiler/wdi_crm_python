@@ -108,7 +108,11 @@ class CRM:
 
     def display_all_contacts(self):
         print('\nDisplay all contacts:')
-        Contact.all()
+        # Contact.all()
+        for contact in Contact.select():
+            print(f'{contact.first_name} - {contact.last_name}')
+            print(f'{contact.email}')
+            print(f'{contact.note}')
         
     def search_by_attribute(self):
         print('\nSearch by Attribute')
