@@ -170,41 +170,41 @@ class CRM:
             search_parameter = input()
 
 
-            # print(Contact.find_by(search_attribute, search_parameter))  ###This doesn't work.
+            # # print(Contact.find_by(search_attribute, search_parameter))  ###This doesn't work.
 
 
-            contact = Contact.get(Contact.id == 1)
-            print(contact)
+            # contact = Contact.get(Contact.id == 1)
+            # print(contact)
 
 
-            # if search_attribute == 1:
-            #     print('first name')
-            #     # search_attribute = 'first_name'
-            #     # Contact.get(first_name = search_parameter).execute()
-            #     # Contact.get('first_name' == search_parameter)
+            # # if search_attribute == 1:
+            # #     print('first name')
+            # #     # search_attribute = 'first_name'
+            # #     # Contact.get(first_name = search_parameter).execute()
+            # #     # Contact.get('first_name' == search_parameter)
 
-            #     contact = Contact.get(Contact.first_name == search_parameter)
-
-
-
-            # elif search_attribute == 2:
-            #     print('last name')
-            #     # search_attribute = 'last_name'
-            #     Contact.get(last_name = search_parameter).execute()
-            # elif search_attribute == 3:
-            #     print('email')
-            #     # search_attribute = 'email'
-            #     Contact.get(email = search_parameter).execute()
-            # elif search_attribute == 4:
-            #     print('note')
-            #     # search_attribute = 'note'
-            #     Contact.get(email = search_parameter).execute()
+            # #     contact = Contact.get(Contact.first_name == search_parameter)
 
 
-            # print(f'search_attribute: {search_attribute}')
-            print(f'search_parameter: {search_parameter}')
 
-            # print(Contact.get(search_attribute = search_parameter))
+            # # elif search_attribute == 2:
+            # #     print('last name')
+            # #     # search_attribute = 'last_name'
+            # #     Contact.get(last_name = search_parameter).execute()
+            # # elif search_attribute == 3:
+            # #     print('email')
+            # #     # search_attribute = 'email'
+            # #     Contact.get(email = search_parameter).execute()
+            # # elif search_attribute == 4:
+            # #     print('note')
+            # #     # search_attribute = 'note'
+            # #     Contact.get(email = search_parameter).execute()
+
+
+            # # print(f'search_attribute: {search_attribute}')
+            # print(f'search_parameter: {search_parameter}')
+
+            # # print(Contact.get(search_attribute = search_parameter))
 
 
 
@@ -237,7 +237,30 @@ class CRM:
 
 
 
+            if search_attribute == 1:
+                print('first name')
+                # search_attribute = 'first'
+                query = Contact.select().where(Contact.first_name == search_parameter)
+            elif search_attribute == 2:
+                print('last name')
+                # search_attribute = 'last_name'
+                query = Contact.select().where(Contact.last_name == search_parameter)
+            elif search_attribute == 3:
+                print('email')
+                # search_attribute = 'email'
+                query = Contact.select().where(Contact.email == search_parameter)
+            elif search_attribute == 4:
+                print('note')
+                # search_attribute = 'note'
+                query = Contact.select().where(Contact.note == search_parameter)
 
+
+
+            for contact in query:
+                print(f'{contact.id}')
+                print(f'{contact.first_name} - {contact.last_name}')
+                print(f'{contact.email}')
+                print(f'{contact.note}\n')
 
 
 
@@ -288,15 +311,18 @@ class CRM:
             query = Contact.select().where(Contact.id == search_id)
             # query.execute()
 
-            print(type(query))
+            # print(type(query))
 
-            for tweet in query:
-                print(tweet.first_name)
+            for contact in query:
+                print(f'{contact.id}')
+                print(f'{contact.first_name} - {contact.last_name}')
+                print(f'{contact.email}')
+                print(f'{contact.note}\n')
 
 
 # query = User.select().where(User.active == True).order_by(User.username)
 
-            print('im done!')
+            # print('im done!')
 
 
         else: 
